@@ -1,0 +1,43 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+public class MinimumAbsoluteDifferencePairs {
+
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(6, 2, 4, 10);
+        List<int[]> pairs = findPairsWithMinimumDifference(numbers);
+
+        System.out.println("Pairs with minimum absolute difference:");
+        for (int[] pair : pairs) {
+            System.out.println("(" + pair[0] + ", " + pair[1] + ")");
+        }
+    }
+
+    public static List<int[]> findPairsWithMinimumDifference(List<Integer> numbers) {
+        Collections.sort(numbers);
+
+        int minimumDifference = Integer.MAX_VALUE;
+        List<int[]> pairs = new ArrayList<>();
+
+        // Find the minimum absolute difference
+        for (int i = 0; i < numbers.size() - 1; i++) {
+            int difference = numbers.get(i + 1) - numbers.get(i);
+            if (difference < minimumDifference) {
+                minimumDifference = difference;
+                pairs.clear(); // Clear the list as we found a new minimum difference
+            }
+            if (difference == minimumDifference) {
+                pairs.add(new int[]{numbers.get(i), numbers.get(i + 1)});
+            }
+        }
+
+        // Sort the pairs
+        pairs.sort(Comparator.comparingInt((int[] pair) -> pair[0])
+                             .thenComparingInt(pair -> pair[1]));
+
+        return pairs;
+    }
+}
