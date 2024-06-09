@@ -1,0 +1,33 @@
+class Solution {
+    public int maxPoints(int[][] points) {
+        int n = points.length;
+        if(n ==1) return 1;
+        int max_count = 0;
+
+        for(int i =0;i<n;i++){
+            for(int j = i+1; j <n;j++){
+                int x1 = points[i][0];
+                int y1 = points[i][1];
+                int x2 = points[j][0];
+                int y2 = points[j][1];
+                System.out.println("x1 + y1 + x2 + y2 : " +x1+" "+y1+ " "+x2+ " "+y2);
+                int c = 0;
+                for(int k =0; k <n;k++){
+                    System.out.println("points k"+k);
+
+                    System.out.println("points[k][1]"+points[k][1]);
+                    System.out.println("points[k][0]"+points[k][0]);
+
+                    if((points[k][1]-y1) *(x2-x1) == (y2-y1)*(points[k][0]-x1))
+                        c++;
+                }
+                System.out.println("max_count"+max_count);
+
+                System.out.println("c"+c);
+
+                max_count = Math.max(max_count,c);
+            }
+        }
+        return max_count;
+    }
+}
