@@ -17,13 +17,11 @@ class Solution {
             }
             sum = sum + number ;
             number = sum/10;
-            //System.out.println("number"+number);
-
-            System.out.println("new Sum"+sum);
             ListNode node = new ListNode(sum %10);
             currentNode.next = node;
             currentNode = node;
         }      
     return result.next;
     }
+
 }
