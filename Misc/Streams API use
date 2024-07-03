@@ -35,6 +35,8 @@ Ans :     boolean isAnagram = Arrays.equals(str.get(0).chars().sorted().toArray(
   b. Sum of salary : 
                String sumOfSalary= employeeList.stream().mapToDouble(emp -> emp.getSalary()).sum();
   c. PartitionBy in Stream API :  
-               Map<Boolean,List<Employee>> map = employeeList.stream().collect(Collectors.partitioningBy(emp -> emp.getAge() > 25));
-            
+               Map<Boolean,List<Employee>> map = employeeList.stream().collect(Collectors.partitioningBy(emp -> emp.getAge() > 25)); -- Always return Boolean and List
+d. Grouping by in Stream API : 
+        Map<Integer, List<Employee>> mapGorupting = employeeList.stream().collect(Collectors.groupingBy(Employee :: getAge)); -- Returns DataType of GroupedBy and  ListOfObject
+
 
