@@ -31,8 +31,10 @@ Ans :     boolean isAnagram = Arrays.equals(str.get(0).chars().sorted().toArray(
                 employeeList.add(new Employee(222, "Nitin Joshi", 25, "Male", "Product Development", 
 
   a. Employees average salary : 
-    String average = employeeList.stream().mapToDouble(emp -> emp.getSalary()).average().toString();
+               String average = employeeList.stream().mapToDouble(emp -> emp.getSalary()).average().toString();
   b. Sum of salary : 
-    String sumOfSalary= employeeList.stream().mapToDouble(emp -> emp.getSalary()).sum();
-7. 
+               String sumOfSalary= employeeList.stream().mapToDouble(emp -> emp.getSalary()).sum();
+  c. PartitionBy in Stream API :  
+               Map<Boolean,List<Employee>> map = employeeList.stream().collect(Collectors.partitioningBy(emp -> emp.getAge() > 25));
+            
 
