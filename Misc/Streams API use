@@ -39,4 +39,7 @@ Ans :     boolean isAnagram = Arrays.equals(str.get(0).chars().sorted().toArray(
 d. Grouping by in Stream API : 
         Map<Integer, List<Employee>> mapGorupting = employeeList.stream().collect(Collectors.groupingBy(Employee :: getAge)); -- Returns DataType of GroupedBy and  ListOfObject
 
+7. Grouping by in Steam API :
+           List<Integer> list = Arrays.asList(1,2,1,1,0,1,2);
+            Map<Integer, Long> list1 = list.stream().collect(Collectors.groupingBy(e->e, Collectors.counting()));
 
