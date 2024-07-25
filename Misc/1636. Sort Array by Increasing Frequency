@@ -1,0 +1,36 @@
+class Solution {
+    public int[] frequencySort(int[] nums) {
+        
+        List<Integer> numsList = new ArrayList<>();
+        for(Integer a : nums){
+            numsList.add(a);
+        }
+
+        Map<Integer,Long> map1 = numsList.stream().collect(Collectors.groupingBy(e->e, Collectors.counting()));
+
+        List<Integer> resultList = map1.entrySet().stream().sorted((e1,e2) -> {
+           return e1.getValue().compareTo(e2.getValue());
+        
+        }).sorted((b1,b2) ->{
+            if(b1.getValue().equals(b2.getValue())){
+               return b2.getKey().compareTo(b1.getKey());
+            }
+            return b1.getValue().compareTo(b2.getValue());
+        }).map(s1 ->{
+            Long temp = s1.getValue();
+             List<Integer> list = new ArrayList<>();
+
+            while(temp>0){
+                list.add(s1.getKey());
+                temp--;
+            }
+            return list;
+        }).flatMap(List::stream).collect(Collectors.toList());
+       
+        int[] list = new int[resultList.size()];
+        for(Integer i = 0; i < list.length; i++){
+            list[i] = resultList.get(i);
+        }
+         return list;
+    }
+}
