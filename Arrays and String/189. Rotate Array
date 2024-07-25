@@ -1,10 +1,10 @@
 class Solution {
     public void rotate(int[] nums, int k) {
         k = k % nums.length;
-        reverseArray(nums,0,nums.length-1);
+        reverseArray(nums,0,nums.length-1); // Reverse whole array
 
-        reverseArray(nums,0,k-1);
-        reverseArray(nums,k,nums.length-1);
+        reverseArray(nums,0,k-1); // Reverse array from 0 to k 
+        reverseArray(nums,k,nums.length-1); //And lastly reverse array from k to length of array
         
 
        for(int a : nums){
