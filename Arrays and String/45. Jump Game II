@@ -1,0 +1,18 @@
+class Solution {
+    public int jump(int[] nums) {
+        int end = 0;
+        int reach = 0;
+        int jump = 0;
+        for(int i = 0; i < nums.length-1; i++){ // nums.length -1 because we dont want to go till last of nums length
+            
+            reach = Math.max(reach,i + nums[i]);
+            
+            if(i == end){
+                end = reach;
+                jump++;
+            }
+        }
+        return jump;
+
+    }
+}
