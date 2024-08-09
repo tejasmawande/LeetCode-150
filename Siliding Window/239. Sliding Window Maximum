@@ -1,0 +1,25 @@
+class Solution {
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        int left = 0;
+        int right = 0; 
+        int n = nums.length;
+        int currentMax = Integer.MIN_VALUE;
+        int count = 0;
+        List<Integer> resultList = new ArrayList<>();
+        for(right = 0; right < n ; right++){
+
+            currentMax = Math.max(currentMax, nums[right]);
+            if(right - left +1 == k){
+                resultList.add(currentMax);
+                currentMax = Integer.MIN_VALUE;
+                left++;
+                right = left-1;
+            }
+
+        }
+        int n1 = resultList.size();
+        int[] result = new int[n1];
+        result =  resultList.stream().mapToInt(s1 -> s1).toArray();
+        return result;
+    }
+}
