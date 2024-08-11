@@ -33,4 +33,55 @@ class Solution {
     }
 }
 
-//2. 
+//2. Not Brute force approach, check comments for better idea.
+
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+        boolean row0 = false;
+        boolean col0 = false;
+        //checking for first row if we have any 0, if yes then flag is true
+        for(int j = 0 ; j < n ; j++){
+            if(matrix[0][j] ==0){
+                row0 = true;
+            }
+            }
+        //Checking for first column if we have any 0, if yes then flag is true;
+        for(int i = 0 ; i < m; i++){
+            if(matrix[i][0] ==0){
+                col0 = true;
+            }
+        }
+        //from 1 to Last of matrix, checking if any row column is 0, if yes then marking it's first row and column as 0
+        for(int i = 1; i < m; i++){
+            for(int j = 1; j <n ; j++){
+                if(matrix[i][j] ==0){
+                    matrix[i][0] =0;
+                    matrix[0][j] = 0;
+                }
+            }
+        }
+        // in another for loop check for 0th row and column zeros, if there are then make it's i and j th index zero
+
+        for(int i = 1; i < m; i++){
+            for(int j = 1; j < n; j++){
+                if(matrix[0][j] == 0 || matrix[i][0] ==0){
+                    matrix[i][j] =0;
+                }
+            }
+        }
+        //Now iterate for 0th row and make it 0 and same goes for 0th column
+        if(row0){
+            for(int j = 0; j<n ; j++){
+                matrix[0][j] = 0;
+            }
+        }
+        if(col0){
+            for(int i = 0; i<m ; i++){
+                matrix[i][0] = 0;
+            }
+        }
+    }
+    
+}
