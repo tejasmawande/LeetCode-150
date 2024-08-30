@@ -1,0 +1,50 @@
+public class StackImpl {
+  int maxSize;
+  int top;
+  int[] stackArray;
+
+  public StackImpl(int size){
+    this.maxSize = size;
+    this.stackArray = new int[size];
+    this.top = -1;
+  }
+
+  public void push(int val){
+      if(isFull()){
+        System.out.println("Stack is full");
+      }else{
+          stackArray[++top] = val;
+      }
+  }
+
+  public int pop(){
+   if(isEmpty()){
+       System.out.println("Stack Is empty");
+       return -1;
+   }else{
+       return stackArray[top--];
+   }
+  }
+  public boolean isFull(){
+      if(top == maxSize -1 ) return true;
+
+      return false;
+  }
+  public boolean isEmpty(){
+      if(top == -1) return true;
+      return false;
+  }
+
+    public static void main(String[] args) {
+
+        StackImpl stk = new StackImpl(5);
+        stk.push(5);
+        stk.push(4);
+        stk.push(9);
+        stk.push(1);
+
+        while(!stk.isEmpty()){
+            System.out.println("stk"+stk.pop());
+        }
+    }
+}
