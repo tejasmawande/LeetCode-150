@@ -1,39 +1,42 @@
+
 public class StackImpl {
-  int maxSize;
-  int top;
-  int[] stackArray;
 
-  public StackImpl(int size){
-    this.maxSize = size;
-    this.stackArray = new int[size];
-    this.top = -1;
-  }
+    int maxSize;
+    int[] stackArray;
+    int top;
+    int i = -1;
+    public StackImpl(int size) {
+        this.maxSize = size;
+        this.stackArray = new int[size];
+        this.top = top;
+    }
 
-  public void push(int val){
-      if(isFull()){
-        System.out.println("Stack is full");
-      }else{
-          stackArray[++top] = val;
-      }
-  }
+    public void push(int data) {
+        if (isFull()) {
+            System.out.println("Stack is full, cannot push any item");
+        }else{
+            stackArray[++top] = data;
+        }
+    }
 
-  public int pop(){
-   if(isEmpty()){
-       System.out.println("Stack Is empty");
-       return -1;
-   }else{
-       return stackArray[top--];
-   }
-  }
-  public boolean isFull(){
-      if(top == maxSize -1 ) return true;
+    public int pop(){
+        if(isEmpty()){
+            System.out.println("Stack is Empty, Nothing to pop");
+            return -1;
+        }else{
+           return stackArray[top--];
+        }
+    }
 
-      return false;
-  }
-  public boolean isEmpty(){
-      if(top == -1) return true;
-      return false;
-  }
+    public boolean isFull() {
+
+        if(top == maxSize -1) return true;
+        return false;
+    }
+    public boolean isEmpty(){
+        if(top == -1) return true;
+         return false;
+    }
 
     public static void main(String[] args) {
 
@@ -46,5 +49,6 @@ public class StackImpl {
         while(!stk.isEmpty()){
             System.out.println("stk"+stk.pop());
         }
+       stk.pop();
     }
 }
