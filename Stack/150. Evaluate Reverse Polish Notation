@@ -1,0 +1,30 @@
+class Solution {
+    public int evalRPN(String[] tokens) {
+
+        Stack<Integer> resultStack = new Stack<>();
+
+        for(String c : tokens){
+            if(c.equals("+") || c.equals("*") || c.equals("/") || c.equals("-")){
+                if(!resultStack.isEmpty()){
+                    int b = resultStack.pop();
+                    int a = resultStack.pop();
+                    int result = 0;
+                    if(c.equals("+")){
+                         result = a + b;
+                    }if(c.equals("-")){
+                         result = a - b;
+                    }if(c.equals("/")){
+                         result = a / b;
+                    }if(c.equals("*")){
+                         result = a * b;
+                    }
+                    resultStack.push(result);
+                }
+            }else{
+                    int val = Integer.valueOf(c);
+                    resultStack.push(val);
+            }
+            }
+      return  resultStack.pop();
+    }
+}
