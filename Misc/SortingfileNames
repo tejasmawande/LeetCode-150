@@ -1,0 +1,21 @@
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+public class FilesHandling {
+    public static void main(String[] args) {
+            List<String> filesInput = Arrays.asList("FileA", "File20", "File19", "File32","FullB","File1","File2");
+        List<String> result = new ArrayList<>();
+        Map<Boolean, List<String>> map = filesInput.stream().sorted((a,b) -> a.compareTo(b)).collect(Collectors.groupingBy(s->s.matches("\\D+")));
+
+        List<String> resultWithNumber= map.get(false).stream().sorted(Comparator.comparingInt(s->Integer.parseInt(s.replaceAll("\\D+", "")))).collect(Collectors.toList());
+        System.out.println("Map"+map);
+        for(String resultWithoutNumber : map.get(true)){
+            result.add(resultWithoutNumber);
+        }
+        for(String resultWithNo : resultWithNumber){
+            result.add(resultWithNo);
+        }
+        System.out.println("result"+result);
+    }
+}
