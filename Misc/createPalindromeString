@@ -1,0 +1,47 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class CreatePalindrome {
+
+
+    public static void main(String[] args) {
+        String input = "abdabdx";
+        String result = generatePalindrome(input);
+
+        System.out.println("result"+result);
+    }
+
+    public static String generatePalindrome(String input){
+
+        Map<Character, Long> map = input.chars()
+                .mapToObj(c->(char)c)
+                .collect(Collectors.groupingBy(c->c, Collectors.counting()));
+
+            StringBuilder halfPart = new StringBuilder();
+            StringBuilder midPart = new StringBuilder();
+        for(Map.Entry<Character, Long> mapData : map.entrySet()){
+            char data = mapData.getKey();
+            Long count = mapData.getValue();
+
+            if(count %2 ==0){
+                for(int i = 0; i < count/2;i++){
+                    halfPart.append(data);
+                }
+            }else{
+                for(int i = 0; i < count/2;i++){
+                    halfPart.append(data);
+                }
+                if(midPart.length() == 0){
+                    midPart.append(data);
+                }
+            }
+
+        }
+        StringBuilder palindromeString = new StringBuilder(halfPart);
+        palindromeString.append(midPart);
+        palindromeString.append(halfPart.reverse());
+        return palindromeString.toString();
+    }
+
+}
