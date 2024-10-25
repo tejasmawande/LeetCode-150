@@ -1,0 +1,35 @@
+public class ShortestPalindrome {
+
+    public static void main(String[] args) {
+        String input = "aabb";
+
+        String result = shortestPalindrome(input);
+        System.out.println("result"+result);
+    }
+
+    public static String shortestPalindrome(String input){
+
+        if(isPalindrome(input)){
+            return input;
+        }
+        String suffix = "";
+        for(int i = 0 ; i < input.length(); i++){
+            if(isPalindrome(input.substring(i))) {
+                suffix = input.substring(0, i);
+                break;
+            }
+        }
+        StringBuilder str = new StringBuilder(suffix).reverse();
+
+        return input + str.toString();
+    }
+    
+    public static boolean isPalindrome(String str){
+        for(int i = 0; i<str.length(); i++){
+            if(str.charAt(i) != str.charAt(str.length() - i -1)){
+                return false;
+            }
+        }
+        return true;
+    }
+}
