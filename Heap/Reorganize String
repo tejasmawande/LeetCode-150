@@ -1,0 +1,39 @@
+class Solution {
+    public String reorganizeString(String s) {
+        
+
+        Map<Character,Integer> map = s.chars()
+                    .mapToObj(t->(char)t)
+                    .collect(Collectors.toMap(
+                        t->t,
+                        t->1,
+                        Integer :: sum
+                    ));
+
+        PriorityQueue<Map.Entry<Character, Integer>> maxHeap = new PriorityQueue<>(
+            (a,b) -> b.getValue() - a.getValue()
+        );
+
+        maxHeap.addAll(map.entrySet());
+
+        StringBuilder result = new StringBuilder();
+        Map.Entry<Character, Integer> prev = null;
+
+        while(!maxHeap.isEmpty() || prev !=null){
+            if(prev != null && maxHeap.isEmpty()){
+                return "";
+            }
+
+            Map.Entry<Character,Integer> current = maxHeap.poll();
+
+            result.append(current.getKey());
+            current.setValue(current.getValue() -1);
+
+            if(prev != null){
+                maxHeap.add(current);
+            }
+            prev = current.getValue() > 0 ? current : null;
+        }
+        return result.toString();
+    }
+}
