@@ -15,3 +15,27 @@ class Solution {
         return "";
     }
 }
+
+
+/* Input : abcd 
+   expected output : dcba
+
+String rev = dcba; 
+
+for(int i = 0; i < input.length(); i++)
+{
+i = 0 -> abcd == dcba ? = false;
+i = 1 -> abc == cba ? = false;
+i = 2 -> ab == ba ?= false;
+i = 3 -> a == a? true;
+
+rev.substring(0, 3) + input ;
+    dcb+abcd = 
+
+output ==> dcbd;
+
+}
+
+
+
+ */
